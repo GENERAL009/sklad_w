@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="mt-5 text-center">
+    <h2 class="mb-3" >Tovar Sotish</h2>
+    <form method="post" >
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-danger">Tovar Sotish</button>
+    </form>
+  </div>
+{% endblock %}

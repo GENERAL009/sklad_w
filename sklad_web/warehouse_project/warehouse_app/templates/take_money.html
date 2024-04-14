@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block inner_content %}
+<div class="row">
+  <div class="col">
+    <div class="text-center">
+      <h2>Qarzdorlik</h2>
+      <form method="post" action="{% url 'take_money' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-danger" type="submit">Pull olish</button>
+      </form>
+    </div>
+  </div>
+  <div class="col">
+    <div class="text-center">
+      <h3>Olingan pullar</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for profit in profits %}
+            <tr>
+              <td>{{ profit.sana }}</td>
+              <td>{{ profit.olinadigan_summa }}</td>
+              <td>{{ profit.kommentariya}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+    <div class="text-center">
+      <h2>Bugungi So`vda</h2>
+      <form method="get">
+    <label for="date">Sanani tanlanng:</label>
+    <input type="date" id="date" name="date">
+    <button type="submit" class="btn btn-primary">Qidirish</button>
+    <a href="{% url 'take_money' %}" class="btn btn-secondary">Bekor qilish</a>
+</form>
+        <form method="GET">
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date">
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date">
+    <button class="btn btn-success" type="submit" name="export_sales_excel">Excel</button>
+          <button type="submit" name="export_sales_excel" class="btn btn-success">Bugungi sovda Excel</button>
+</form>
+
+      <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Selling Price</th>
+                <th>Quantity</th>
+                <th>Date</th>
+                <th>Shop</th>
+                <th>Payment Method</th>
+                <th>Debt</th>
+                <th>Profit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sales_list %}
+                <tr>
+                    <td>{{ sale.mahsulot.nomi }}</td>
+                    <td>{{ sale.sotiladigan_narxi }}</td>
+                    <td>{{ sale.soni }}</td>
+                    <td>{{ sale.sotilgan_sana }}</td>
+                    <td>{{ sale.dokon }}</td>
+                    <td>{{ sale.tolash_usuli }}</td>
+                    <td>{{ sale.qarz }}</td>
+                    <td>{{ sale.foyda }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  </div>
+{% endblock %}

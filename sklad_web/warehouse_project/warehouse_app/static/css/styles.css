@@ -1,0 +1,43 @@
+
+
+body {
+    background-color: #282c34;
+    color: #fff;
+    padding-top: 60px;
+}
+
+.container {
+    background-color: #282c30;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.form-control {
+    border-radius: 5px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #bb2c3b;
+    border-color: #bb2c3b;
+}
+

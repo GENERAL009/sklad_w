@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class=" mt-5 text-center">
+    <h2 class="mb-3 ml-5 ">Tovar qo`shish</h2>
+      <form method="post" action="{% url 'add_product' %}" class="ml-5">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="ml-10 btn btn-primary">Tovar qo`shish</button>
+    </form>
+  </div>
+{% endblock %}
+
+button = ctk.CtButton
+
